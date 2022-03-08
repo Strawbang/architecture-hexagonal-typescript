@@ -1,6 +1,6 @@
-import UserInterface from "./user.interface";
+import IUser from "./IUser";
 
-export default class UserClass implements UserInterface {
+export default class User implements IUser {
     username: string;
     password: string;
 
