@@ -1,25 +1,61 @@
 version: '3.8'
+# networks:
+#     web:
+#         external: true
 services:
+    # traefik:
+    #     image: traefik:v2.3
+    #     command:
+    #         - "--log.level=DEBUG"
+    #         - "--api.insecure=true"
+    #         - "--providers.docker=true"
+    #         - "--providers.docker.exposedbydefault=false"
+    #         - "--entrypoints.web.address=:80"
+    #     restart: always
+    #     ports:
+    #         - "80:80"
+    #     networks:
+    #         - web
+    #     volumes:
+    #         - /var/run/docker.sock:/var/run/docker.sock
+    #     labels:
+    #         - "traefik.enable=true"
+    #         - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
+    #         - "traefik.http.routers.traefik.entrypoints=web"
+    #         - "traefik.http.services.traefik.loadbalancer.server.port=8080"
     jenkins:
         image: jenkins/jenkins:lts
         privileged: true
         user: root
-        ports:
+        # networks:
+        #     - web
+        ports: 
             - 8080:8080
-            - 50000:50000
         container_name: jenkins
         volumes:
             - ./docker_compose/jenkins_configuration:/var/jenkins_home
             - /var/run/docker.sock:/var/run/docker.sock
+        # labels:
+        #     - "traefik.enable=true"
+        #     - "traefik.http.routers.jenkins.rule=Host(`jenkins.localhost`)"
+        #     - "traefik.http.routers.jenkins.entrypoints=web"
+        #     - "traefik.http.services.jenkins.loadbalancer.server.port=8080"
     portainer:
         image: portainer/portainer-ce:latest
         container_name: portainer
         restart: unless-stopped
+        # networks:
+        #     - web
         security_opt:
             - no-new-privileges:true
+        ports: 
+            - 9000:9000
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /var/run/docker.sock:/var/run/docker.sock:ro
             - ./docker_compose/portainer-data:/data
-        ports:
-            - 9000:9000
+        # labels:
+        #     - "traefik.enable=true"
+        #     - "traefik.http.routers.portainer.rule=Host(`portainer.localhost`)"
+        #     - "traefik.http.routers.portainer.entrypoints=web"
+        #     - "traefik.http.services.portainer.loadbalancer.server.port=9000"
