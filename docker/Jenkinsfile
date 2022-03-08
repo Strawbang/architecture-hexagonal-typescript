@@ -1,0 +1,15 @@
+node {
+    def branch;
+    def scmvar;
+    def localbranch;
+    def buildNumber = currentBuild.number;
+
+    stage('Checkout'){
+        deleteDir();
+        scmvar = checkout scm;
+        branch = scmvar.GIT_BRANCH
+        echo branch
+        localbranch = branch.substring(7)
+        // test branch
+    }
+}
