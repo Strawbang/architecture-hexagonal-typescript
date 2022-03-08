@@ -1,6 +1,6 @@
 import { createMock } from 'ts-auto-mock';
 import { method, On } from 'ts-auto-mock/extension';
-import UserInterface from '../src/user/user.interface';
+import UserInterface from '../src/domain/user/IUser';
 
 describe('User', () => {
     let mockUserInterface : UserInterface;
