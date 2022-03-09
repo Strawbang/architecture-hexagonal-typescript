@@ -1,10 +1,12 @@
 import IUser from "./IUser";
+import Person from "./Person";
 
-export default class User implements IUser {
+export default class User extends Person implements IUser {
     username: string;
     password: string;
 
-    constructor(username: string, password: string){
+    constructor(firstname: string, lastname: string, username: string, password: string){
+        super(firstname, lastname);
         this.username = username;
         this.password = password;
     }
