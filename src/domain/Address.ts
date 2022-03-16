@@ -1,5 +1,4 @@
 export default class Address {
-
     constructor(
         public readonly street: string,
         public readonly city: string,
