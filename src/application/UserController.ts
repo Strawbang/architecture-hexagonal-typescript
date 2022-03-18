@@ -1,28 +1,36 @@
-import { ReasonPhrases, StatusCodes, getReasonPhrase, getStatusCode} from 'http-status-codes';
-import { Controller, Get } from 'routing-controllers';
-import { autoInjectable, inject, injectable } from 'tsyringe';
-import UserService from './UserService';
+import { ReasonPhrases, StatusCodes } from 'http-status-codes';
+import { Controller, Get, Req, Res } from 'routing-controllers';
+import { autoInjectable, delay, inject, injectable, injectAll } from 'tsyringe';
+import { UserService } from './UserService';
 
 /**
  * @class UserController
  * @desc Responsible for handling API requests for the
  * /user route.
  **/
-@injectable()
-@Controller()
-export class UserController {
-  private userService: UserService;
 
-  constructor (@inject("UserService")UserService?: UserService) {
-    this.userService = UserService;
+
+@Controller()
+@injectable()
+export default class UserController {
+
+  constructor ( private UserService: UserService) {
+    
   }
 
   @Get('/users')
-  async handleGetUsers (req, res): Promise<void> {
+  async handleGetUsers (@Req() req: any, @Res() res: any): Promise<void> {
     try {
-      const users = await this.userService.getUsers()
+      console.log('1');
+      console.log(this);
+      console.log(this.UserService);
+      // const response = this.UserService.getUsers();
+      console.log('3');
+      // console.log(response);
+      return await res.status(StatusCodes.OK).send('test')
     } catch (error) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: error.message });
+      console.log(error.message);
+      return await res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ReasonPhrases.INTERNAL_SERVER_ERROR);
     }
   }
 }

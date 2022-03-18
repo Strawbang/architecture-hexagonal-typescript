@@ -1,8 +1,6 @@
-import { singleton } from "tsyringe";
 import User from "../domain/User";
-import { IUserRepo } from "./IUserRepo";
+import IUserRepo from "./IUserRepo";
 
-@singleton()
 export class UserRepo implements IUserRepo {
   
     getUsers (): Promise<User> {

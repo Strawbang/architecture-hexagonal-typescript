@@ -1,5 +1,5 @@
 import User from "../domain/User";
 
-export interface IUserRepo {
+export default interface IUserRepo {
     getUsers (): Promise<User>
 }

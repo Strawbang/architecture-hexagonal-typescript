@@ -1,12 +1,15 @@
 import 'reflect-metadata';
-import { container } from 'tsyringe';
 import express from 'express';
-import { UserController } from './application/UserController';
-import { useExpressServer } from 'routing-controllers';
+import { useContainer, useExpressServer } from 'routing-controllers';
+import { container } from 'tsyringe';
+import UserController from './application/UserController';
+import TsyringeAdapter from './application/TsyringeAdapter';
 const app = express();
-const port = 3000;
+const port = 8080;
 
-container.registerSingleton(UserController);
+// https://github.com/typestack/routing-controllers/issues/656
+useContainer(new TsyringeAdapter(container))
+
 useExpressServer(app, {
   routePrefix: '/api',
   controllers: [ UserController ],
