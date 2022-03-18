@@ -21,13 +21,9 @@ export default class UserController {
   @Get('/users')
   async handleGetUsers (@Req() req: any, @Res() res: any): Promise<void> {
     try {
-      console.log('1');
-      console.log(this);
-      console.log(this.UserService);
-      // const response = this.UserService.getUsers();
-      console.log('3');
-      // console.log(response);
-      return await res.status(StatusCodes.OK).send('test')
+      const response = await this.UserService.getUsers();
+      console.log(response);
+      return await res.status(StatusCodes.OK).send(response)
     } catch (error) {
       console.log(error.message);
       return await res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ReasonPhrases.INTERNAL_SERVER_ERROR);

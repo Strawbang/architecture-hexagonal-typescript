@@ -1,4 +1,4 @@
-import { delay, inject, injectable, registry, singleton} from "tsyringe";
+import { delay, inject, injectable, registry } from "tsyringe";
 import IUserRepo from "../infrastructure/IUserRepo";
 import { UserRepo } from "../infrastructure/UserRepo";
 
@@ -11,23 +11,22 @@ import { UserRepo } from "../infrastructure/UserRepo";
 @injectable()
 @registry([
     {
-      token: "IUserRepo",
-      useToken: delay(() => UserRepo)
+      token: 'IUserRepo',
+      useToken: UserRepo,
     }
   ])
 export class UserService {
 
     constructor (
-        @inject('IUserRepo') private userRepo?: IUserRepo) { // and here
+        @inject('IUserRepo') private userRepo: IUserRepo) { // and here
     }
 
-    async getUsers() : Promise<string> {
+    async getUsers() : Promise<object> {
         try {
-            console.log('2')
-            // const users = await this.userRepo.getUsers();
-            // const username = users.username;
-            // console.log(users.username);
-            return await 'test';
+            const users = await this.userRepo.getUsers();
+            // console.log(users);
+            // return await 'test';
+            return users;
         } catch (error) {
             return await error;
         }
