@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import express from 'express';
-import { useContainer, useExpressServer } from 'routing-controllers';
+import koa from 'koa';
+import { useContainer, useExpressServer, useKoaServer } from 'routing-controllers';
 import { container } from 'tsyringe';
 import UserController from '../application/UserController';
 import TsyringeAdapter from './TsyringeAdapter';

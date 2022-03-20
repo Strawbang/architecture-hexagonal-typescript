@@ -1,10 +1,10 @@
-import { delay, inject, injectable, registry } from "tsyringe";
+import { inject, injectable, registry } from "tsyringe";
 import IUserRepo from "../infrastructure/IUserRepo";
 import { UserRepo } from "../infrastructure/UserRepo";
 
 /**
  * @class UserService
- * @desc Responsible for handling API requests for the
+ * @desc Responsible for handling Controller
  **/
 
 
