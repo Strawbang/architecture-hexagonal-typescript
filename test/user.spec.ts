@@ -1,31 +1,36 @@
 import { createMock } from 'ts-auto-mock';
 import { method, On } from 'ts-auto-mock/extension';
-import UserInterface from '../src/domain/IUser';
+import { IUserRepo } from '../src/infrastructure/IUserRepo';
 
 describe('User', () => {
-    let mockUserInterface : UserInterface;
+    let mockIUserRepo : IUserRepo;
 
     beforeEach(() => {
-      mockUserInterface = createMock<UserInterface>();
+      mockIUserRepo = createMock<IUserRepo>();
     });
 
-    it('Username should assign the value', async () => {
-      expect(mockUserInterface.username).toEqual('')
-    });
-
-    it('Password should assign the value', async () => {
-      expect(mockUserInterface.password).toEqual('')
-    });
-
-    it('getUsername should get the spy', () => {
-      const mockMethod: jest.Mock = On(mockUserInterface).get(method(mock => mock.getUsername));
+    it('Get user', async () => {
+      const mockMethod : jest.Mock = On(mockIUserRepo).get(method(mock => mock.getUsers));
       mockMethod();
       expect(mockMethod).toHaveBeenCalled();
-    });
+    })
+    // it('Username should assign the value', async () => {
+    //   expect(mockIUserRepo.username).toEqual('')
+    // });
 
-    it('getPassword should get the spy', () => {
-      const mockMethod: jest.Mock = On(mockUserInterface).get(method(mock => mock.getPassword));
-      mockMethod();
-      expect(mockMethod).toHaveBeenCalled();
-    });
+    // it('Password should assign the value', async () => {
+    //   expect(mockIUserRepo.password).toEqual('')
+    // });
+
+    // it('getUsername should get the spy', () => {
+    //   const mockMethod: jest.Mock = On(mockIUserRepo).get(method(mock => mock.getUsername));
+    //   mockMethod();
+    //   expect(mockMethod).toHaveBeenCalled();
+    // });
+
+    // it('getPassword should get the spy', () => {
+    //   const mockMethod: jest.Mock = On(mockIUserRepo).get(method(mock => mock.getPassword));
+    //   mockMethod();
+    //   expect(mockMethod).toHaveBeenCalled();
+    // });
 })

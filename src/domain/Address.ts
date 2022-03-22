@@ -1,32 +1,12 @@
 export default class Address {
-    public zipcode: number;
-    public city: string;
-    public area: string;
-    public street: string;
-    public department: number;
-    public streetNumber: number;
-
-    // constructor(street: string, city: string, department: number, streetNumber: number, area: string, zipcode: number){
-    //     this.zipcode = zipcode;
-    //     // this.firstname = firstname;
-    //     // this.lastname = lastname;
-        
-    // }
-
-    // getFirstname():string{
-    //     return this.firstname;
-    // }
-
-    // setFirstname(firstname: string){
-    //     this.firstname = firstname;
-    // }
-
-    // getLastname():string{
-    //     return this.lastname;
-    // }
-
-    // setLastname(lastname: string){
-    //     this.lastname = lastname;
-    // }
+    constructor(
+        public readonly street: string,
+        public readonly city: string,
+        public readonly department: number,
+        public readonly streetNumber: number,
+        public readonly area: string,
+        public readonly zipcode: number
+        ){
+    }
 
 }
