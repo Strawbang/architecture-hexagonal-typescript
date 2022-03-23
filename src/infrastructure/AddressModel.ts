@@ -1,7 +1,7 @@
 import { Table, Column, Model } from 'sequelize-typescript'
 
 @Table
-export class Address extends Model {
+export default class Address extends Model {
   @Column
   street: string
 

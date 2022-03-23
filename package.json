@@ -69,6 +69,7 @@
     "routing-controllers": "^0.9.0",
     "sequelize": "^6.17.0",
     "sequelize-typescript": "^2.1.3",
+    "sqlite3": "^5.0.2",
     "ts-auto-mock": "^3.5.0",
     "ts-patch": "^2.0.1",
     "tsyringe": "^4.6.0",

@@ -1,14 +1,14 @@
 import { Table, Column, Model, HasOne } from 'sequelize-typescript'
-import { Person } from '../Person'
+import Person from '../PersonModel'
 
 @Table
-export class User extends Model {
+export default class User extends Model {
   @Column
   username: string
 
   @Column
   password: string
 
-  @HasOne(() => Person)
+  @HasOne(() => Person, 'firstname')
   details: Person[] 
 }
