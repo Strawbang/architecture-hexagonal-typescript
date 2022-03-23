@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
-import Address from "../domain/Address";
-import Person from "../domain/Person";
-import User from "../domain/User";
+import Address from "../../domain/Address";
+import Person from "../../domain/Person";
+import User from "../../domain/User";
 import IUserRepo from "./IUserRepo";
 
 @injectable()

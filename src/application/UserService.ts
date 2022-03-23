@@ -1,6 +1,6 @@
 import { inject, injectable, registry } from "tsyringe";
-import IUserRepo from "../infrastructure/IUserRepo";
-import { UserRepo } from "../infrastructure/UserRepo";
+import IUserRepo from "../infrastructure/User/IUserRepo";
+import { UserRepo } from "../infrastructure/User/UserRepo";
 
 /**
  * @class UserService

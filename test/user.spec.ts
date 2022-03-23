@@ -1,6 +1,6 @@
 import { createMock } from 'ts-auto-mock';
 import { method, On } from 'ts-auto-mock/extension';
-import { IUserRepo } from '../src/infrastructure/IUserRepo';
+import IUserRepo from '../src/infrastructure/User/IUserRepo';
 
 describe('User', () => {
     let mockIUserRepo : IUserRepo;
