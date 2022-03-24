@@ -1,8 +1,8 @@
 import { Table, Column, Model, HasOne } from 'sequelize-typescript'
 import Person from '../PersonModel'
 
-@Table
-export default class User extends Model {
+@Table({modelName: 'User'})
+export default class UserModel extends Model {
   @Column
   username: string
 

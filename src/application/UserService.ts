@@ -21,7 +21,7 @@ export class UserService {
         @inject('IUserRepo') private userRepo: IUserRepo) { // and here
     }
 
-    async getUsers() : Promise<object> {
+    async getUsers() : Promise<void> {
         try {
             const users = await this.userRepo.getUsers();
             // console.log(users);
